@@ -1,4 +1,4 @@
 fastapi
-jose
 uvicorn[standard]
+jose
 
