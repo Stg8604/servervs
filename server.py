@@ -26,7 +26,8 @@ mydb = mysql.connector.connect(
   host="localhost",
   user="root",
   password="Stg08604",
-  database="delta"
+  database="delta",
+   port='3306'
 )
 cursor=mydb.cursor()
 selectstatement="select * from user_info"
