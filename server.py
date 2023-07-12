@@ -7,8 +7,8 @@ import jwt
 from jwt.exceptions import InvalidTokenError
 from passlib.context import CryptContext
 import mysql.connector
-from mysql.connector import connect, Error
-try:
+from mysql.connector import connect,Error
+'''try:
     with connect(
         host="localhost",
         user="root",
@@ -21,7 +21,18 @@ try:
             cursor.execute(selectstatement)
             result=cursor.fetchall()
 except Error as e:
-    print(e)
+    print(e)'''
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="Stg08604",
+  database="delta"
+)
+cursor=mydb.cursor()
+selectstatement="select * from user_info"
+cursor.execute(selectstatement)
+result=cursor.fetchall()
+
 db=dict()
 
 secretkey="83daa0256a2289b0fb23693bf1f6034d44396675749244721a2b20e896e11692"
