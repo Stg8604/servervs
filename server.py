@@ -4,7 +4,7 @@ from pydantic import BaseModel
 from datetime import datetime,timedelta
 #from jose import JWTError,jwt
 import jwt
-from jwt import JWTError
+from jwt.exceptions import InvalidTokenError
 from passlib.context import CryptContext
 import mysql.connector
 from mysql.connector import connect, Error
@@ -78,7 +78,7 @@ async def getcurrent(token:str=Depends(oauth2)):
              if username is None:
                  raise credexcept
              tokendata=TokenData(username=username)
-         except JWTError:
+         except InvalidTokenError:
             raise credexcept
          user=getuser(db,username=tokendata.username)
          if user is None:
