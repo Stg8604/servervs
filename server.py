@@ -9,20 +9,6 @@ from jwt.exceptions import InvalidTokenError
 from passlib.context import CryptContext
 import mysql.connector
 from mysql.connector import connect,Error
-'''try:
-    with connect(
-        host="localhost",
-        user="root",
-        password="Stg08604",
-        database="delta"
-    ) as connection:
-        print(connection)
-        with connection.cursor() as cursor:
-            selectstatement="select * from user_info"
-            cursor.execute(selectstatement)
-            result=cursor.fetchall()
-except Error as e:
-    print(e)'''
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
@@ -30,6 +16,38 @@ mydb = mysql.connector.connect(
   database="delta",
    port='3306'
 )
+#creating tables
+'''
+cursor=mydb.cursor()
+selectstatement="create database delta"
+cursor.execute(selectstatement)
+cursor.close
+cursor=mydb.cursor()
+cursor=mydb.cursor()
+selectstatement="use delta"
+cursor.execute(selectstatement)
+cursor.close
+cursor=mydb.cursor()
+selectstatement="create table gp(username varchar(30),gname varchar(30),name varchar(50),image varchar(100)"
+cursor.execute(selectstatement)
+cursor.close
+cursor=mydb.cursor()
+selectstatement="create table hg(username varchar(30),spname varchar(30),spperson varchar(30),gname varchar(30),name varchar(50),image varchar(100),amount double)"
+cursor.execute(selectstatement)
+cursor.close
+cursor=mydb.cursor()
+selectstatement="create table split(spname varchar(30),spperson varchar(30),username varchar(30),image varchar(100),name varchar(15),amount double)"
+cursor.execute(selectstatement)
+cursor.close
+cursor=mydb.cursor()
+selectstatement="create table transactions(username varchar(30),name varchar(15),amount double,image varchar(100),settle varchar(25))"
+cursor.execute(selectstatement)
+cursor.close
+cursor=mydb.cursor()
+selectstatement="create table split(username varchar(20),image varchar(100),lent int,debt int,pass varchar(100))"
+cursor.execute(selectstatement)
+cursor.close
+'''
 cursor=mydb.cursor()
 selectstatement="select * from user_info"
 cursor.execute(selectstatement)
